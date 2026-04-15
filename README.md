@@ -9,11 +9,8 @@ I risultati sperimentali riportati in questa tesi sono ottenuti in Vivado, trami
  ## 📁 Struttura del progetto
 ```text
 TESI_BACKUP/
-├── dichiarazione_conseguimento_diploma.pdf
-├── piano di studio.pdf
 ├── PRESENTAZIONE/
 │   ├── presentazione.pdf
-│   └── presentazione.ppt
 ├── PROGETTO_VIVADO_TESI/
 │   └── ASCONTESISPERIMENTALE/
 │       ├── ASCONTESISPERIMENTALE.xpr
@@ -34,16 +31,8 @@ TESI_BACKUP/
 │       ├── .gen/
 │       ├── .runs/
 │       ├── .sim/
-│       └── .hw/
-└── TESI/
-    └── backup latex/
-        ├── Introduzione.tex
-        ├── Materiali_e_metodi.tex
-        ├── Implementazione_della_soluzione.tex
-        ├── Ottimizzazione_della_componente_hardware.tex
-        ├── Risultati_sperimentali.tex
-        ├── Conclusione_e_realizzazioni.tex
-        └── ...
+└──       └── .hw/
+      
 ```
 ---
  ## 🧰 Requisiti di sistema
