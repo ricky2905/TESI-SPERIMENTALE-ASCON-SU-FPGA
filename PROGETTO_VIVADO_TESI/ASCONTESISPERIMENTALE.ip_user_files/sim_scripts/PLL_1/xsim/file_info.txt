@@ -1,0 +1,3 @@
+PLL_clk_wiz.v,verilog,xil_defaultlib,../../../../ASCONTESISPERIMENTALE.gen/sources_1/ip/PLL_2/PLL_clk_wiz.v,incdir="../../../ipstatic"incdir="../../../../ASCONTESISPERIMENTALE.gen/sources_1/ip/PLL_2"
+PLL.v,verilog,xil_defaultlib,../../../../ASCONTESISPERIMENTALE.gen/sources_1/ip/PLL_2/PLL.v,incdir="../../../ipstatic"incdir="../../../../ASCONTESISPERIMENTALE.gen/sources_1/ip/PLL_2"
+glbl.v,Verilog,xil_defaultlib,glbl.v

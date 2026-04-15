@@ -1,0 +1,8 @@
+verilog xil_defaultlib --include "../../../../ASCONTESISPERIMENTALE.gen/sources_1/ip/PLL_2" \
+"../../../../ASCONTESISPERIMENTALE.gen/sources_1/ip/PLL_2/PLL_clk_wiz.v" \
+"../../../../ASCONTESISPERIMENTALE.gen/sources_1/ip/PLL_2/PLL.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

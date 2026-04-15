@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_nist_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_nist" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="2,841,744.220 ns"></ZoomStartTime>
+      <ZoomEndTime time="2,842,021.021 ns"></ZoomEndTime>
+      <Cursor1Time time="2,842,000.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="142"></NameColumnWidth>
+      <ValueColumnWidth column_width="130"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="30" />
+   <wvobject type="logic" fp_name="/tb_nist/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_nist/rst_n">
+      <obj_property name="ElementShortName">rst_n</obj_property>
+      <obj_property name="ObjectShortName">rst_n</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_nist/spi_mosi">
+      <obj_property name="ElementShortName">spi_mosi</obj_property>
+      <obj_property name="ObjectShortName">spi_mosi</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_nist/spi_miso">
+      <obj_property name="ElementShortName">spi_miso</obj_property>
+      <obj_property name="ObjectShortName">spi_miso</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_nist/spi_sck">
+      <obj_property name="ElementShortName">spi_sck</obj_property>
+      <obj_property name="ObjectShortName">spi_sck</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_nist/spi_cs">
+      <obj_property name="ElementShortName">spi_cs</obj_property>
+      <obj_property name="ObjectShortName">spi_cs</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_nist/puf_enable">
+      <obj_property name="ElementShortName">puf_enable</obj_property>
+      <obj_property name="ObjectShortName">puf_enable</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_nist/puf_ready">
+      <obj_property name="ElementShortName">puf_ready</obj_property>
+      <obj_property name="ObjectShortName">puf_ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_nist/use_puf">
+      <obj_property name="ElementShortName">use_puf</obj_property>
+      <obj_property name="ObjectShortName">use_puf</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_nist/i">
+      <obj_property name="ElementShortName">i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_nist/wc">
+      <obj_property name="ElementShortName">wc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wc[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_nist/led_busy">
+      <obj_property name="ElementShortName">led_busy</obj_property>
+      <obj_property name="ObjectShortName">led_busy</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_nist/led_done">
+      <obj_property name="ElementShortName">led_done</obj_property>
+      <obj_property name="ObjectShortName">led_done</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_nist/led_error">
+      <obj_property name="ElementShortName">led_error</obj_property>
+      <obj_property name="ObjectShortName">led_error</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_nist/nonce_bytes">
+      <obj_property name="ElementShortName">nonce_bytes[0:15][7:0]</obj_property>
+      <obj_property name="ObjectShortName">nonce_bytes[0:15][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_nist/msg_bytes">
+      <obj_property name="ElementShortName">msg_bytes[0:7][7:0]</obj_property>
+      <obj_property name="ObjectShortName">msg_bytes[0:7][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_nist/expected_tag">
+      <obj_property name="ElementShortName">expected_tag[0:15][7:0]</obj_property>
+      <obj_property name="ObjectShortName">expected_tag[0:15][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_nist/read_byte">
+      <obj_property name="ElementShortName">read_byte[7:0]</obj_property>
+      <obj_property name="ObjectShortName">read_byte[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_nist/read_tag_bytes">
+      <obj_property name="ElementShortName">read_tag_bytes[0:15][7:0]</obj_property>
+      <obj_property name="ObjectShortName">read_tag_bytes[0:15][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_nist/mismatch">
+      <obj_property name="ElementShortName">mismatch</obj_property>
+      <obj_property name="ObjectShortName">mismatch</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_nist/expected_present">
+      <obj_property name="ElementShortName">expected_present</obj_property>
+      <obj_property name="ObjectShortName">expected_present</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_nist/current_expected_tag">
+      <obj_property name="ElementShortName">current_expected_tag[127:0]</obj_property>
+      <obj_property name="ObjectShortName">current_expected_tag[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_nist/PROF_KEY">
+      <obj_property name="ElementShortName">PROF_KEY[127:0]</obj_property>
+      <obj_property name="ObjectShortName">PROF_KEY[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_nist/PUF_KEY">
+      <obj_property name="ElementShortName">PUF_KEY[127:0]</obj_property>
+      <obj_property name="ObjectShortName">PUF_KEY[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_nist/EXPECTED_TAG_PUF">
+      <obj_property name="ElementShortName">EXPECTED_TAG_PUF[127:0]</obj_property>
+      <obj_property name="ObjectShortName">EXPECTED_TAG_PUF[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_nist/EXPECTED_TAG_PROF">
+      <obj_property name="ElementShortName">EXPECTED_TAG_PROF[127:0]</obj_property>
+      <obj_property name="ObjectShortName">EXPECTED_TAG_PROF[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_nist/EXPECTED_TAG_BOUNDARY1">
+      <obj_property name="ElementShortName">EXPECTED_TAG_BOUNDARY1[127:0]</obj_property>
+      <obj_property name="ObjectShortName">EXPECTED_TAG_BOUNDARY1[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_nist/EXPECTED_TAG_BOUNDARY2">
+      <obj_property name="ElementShortName">EXPECTED_TAG_BOUNDARY2[127:0]</obj_property>
+      <obj_property name="ObjectShortName">EXPECTED_TAG_BOUNDARY2[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_nist/EXPECTED_TAG_BOUNDARY3">
+      <obj_property name="ElementShortName">EXPECTED_TAG_BOUNDARY3[127:0]</obj_property>
+      <obj_property name="ObjectShortName">EXPECTED_TAG_BOUNDARY3[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_nist/EXPECTED_TAG_BOUNDARY4">
+      <obj_property name="ElementShortName">EXPECTED_TAG_BOUNDARY4[127:0]</obj_property>
+      <obj_property name="ObjectShortName">EXPECTED_TAG_BOUNDARY4[127:0]</obj_property>
+   </wvobject>
+</wave_config>
