@@ -1,6 +1,6 @@
 # 🇮🇹 ASCON su FPGA — Tesi sperimentale
 
-Questo progetto realizza e verifica in Vivado un’implementazione di ASCON-128 su FPGA Cmod35.  
+Questo progetto realizza e verifica in Vivado un’implementazione di ASCON-128 su FPGA Artix-7 100T.  
 L’architettura integra il core crittografico, la permutazione interna, un controller SPI, un blocco di clock management e una logica di selezione della chiave tra chiave esterna e PUF emulata/simulata.
 La parte PUF è presente nel progetto ma solo simulata/emulata, non implementata come PUF fisica su scheda.
 I risultati sperimentali riportati in questa tesi sono ottenuti in Vivado, tramite simulazione funzionale e report di implementazione, non su scheda fisica effettiva.
@@ -399,7 +399,7 @@ ASCONTESISPERIMENTALE.xpr
 ---
  # 🇬🇧 ASCON on FPGA — Experimental Thesis Project
 
-This project implements and verifies ASCON-128 in Vivado on an FPGA Cmod35.  
+This project implements and verifies ASCON-128 in Vivado on an FPGA Artix-7 100T.  
 The architecture includes the cryptographic core, the internal permutation, an SPI controller, clock management, and key-selection logic between an external key and a simulated/emulated PUF.
 The PUF part is included in the project but only simulated/emulated, not implemented as a physical PUF on the board.
 The experimental results reported in this thesis are obtained in Vivado, through functional simulation and implementation reports, not on a real hardware board.
