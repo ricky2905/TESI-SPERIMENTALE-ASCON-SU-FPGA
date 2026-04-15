@@ -1,8 +1,10 @@
 🇮🇹 ASCON su FPGA — Tesi sperimentale
+
 Questo progetto realizza e verifica in Vivado un’implementazione di ASCON-128 su FPGA Cmod35.  
 L’architettura integra il core crittografico, la permutazione interna, un controller SPI, un blocco di clock management e una logica di selezione della chiave tra chiave esterna e PUF emulata/simulata.
 La parte PUF è presente nel progetto ma solo simulata/emulata, non implementata come PUF fisica su scheda.
 I risultati sperimentali riportati in questa tesi sono ottenuti in Vivado, tramite simulazione funzionale e report di implementazione, non su scheda fisica effettiva.
+
 ---
 📁 Struttura del progetto
 ```text
@@ -53,6 +55,7 @@ Git (opzionale)
 ```
 ---
 ⚙️ Architettura del progetto
+
 L’implementazione è stata organizzata in moduli separati per mantenere il design leggibile, verificabile e facilmente estendibile:
 `ascon_top.v`: modulo di livello superiore, responsabile dell’integrazione tra clock, interfaccia SPI, controller, core crittografico e selezione della chiave.
 `ascon_controller.v`: unità di controllo a macchina a stati finiti, dedicata al parsing dei comandi SPI, al provisioning della chiave e all’avvio delle operazioni.
@@ -63,8 +66,10 @@ L’implementazione è stata organizzata in moduli separati per mantenere il des
 `SPI.v`: interfaccia seriale SPI per la comunicazione con l’esterno.
 `constraints.xdc`: vincoli di progetto per assegnazione pin e clock.
 `tb_nist.v`: testbench utilizzato per la validazione funzionale del sistema.
+
 ---
 🔬 Analisi e ottimizzazione
+
 Durante l’analisi del progetto è emerso che la funzione di permutazione costituiva il principale collo di bottiglia dell’architettura.  
 In particolare, il suo costo temporale rallentava l’intero flusso crittografico, penalizzando sia la latenza complessiva sia la frequenza massima raggiungibile.
 Per questo motivo è stata introdotta una soluzione pipeline, con l’obiettivo di migliorare il comportamento del blocco critico e rendere il datapath più efficiente.  
@@ -74,6 +79,7 @@ un migliore bilanciamento del datapath;
 un incremento della frequenza massima teoricamente ottenibile;
 un comportamento più stabile del core durante la simulazione e il flusso di implementazione.
 Questa scelta progettuale rappresenta uno degli elementi più significativi della tesi, perché interviene direttamente sul punto più costoso dell’architettura e ne migliora la qualità complessiva.
+
 ---
 🧪 Validazione funzionale
 La validazione è stata svolta con il testbench:
@@ -81,11 +87,13 @@ La validazione è stata svolta con il testbench:
 tb_nist.v
 ```
 Il testbench verifica:
+
 cifratura con PUF simulata
 provisioning di chiave esterna
 test su boundary conditions
 confronto tra tag atteso e tag ottenuto
 La simulazione conferma che il tag prodotto dal core coincide con quello atteso in tutti gli scenari testati.
+
 ---
 📦 Setup del progetto in Vivado
 1) Apri il progetto
@@ -124,11 +132,13 @@ La chiave esterna usata nei test è:
 ```
 ---
 🧠 PUF
+
 La PUF presente in questo lavoro è emulata:
 genera una risposta deterministica a partire dal challenge;
 serve per validare il flusso di controllo e la selezione della chiave;
 non rappresenta una PUF fisica implementata su scheda.
 Questa scelta è coerente con la natura sperimentale della tesi e con l’obiettivo di validare l’architettura in Vivado.
+
 ---
 📈 Risultati sperimentali su Vivado
 I risultati seguenti sono ottenuti in Vivado, non su scheda fisica.
@@ -399,10 +409,12 @@ ASCONTESISPERIMENTALE.xpr
 ```
 ---
 🇬🇧 ASCON on FPGA — Experimental Thesis Project
+
 This project implements and verifies ASCON-128 in Vivado on an FPGA Cmod35.  
 The architecture includes the cryptographic core, the internal permutation, an SPI controller, clock management, and key-selection logic between an external key and a simulated/emulated PUF.
 The PUF part is included in the project but only simulated/emulated, not implemented as a physical PUF on the board.
 The experimental results reported in this thesis are obtained in Vivado, through functional simulation and implementation reports, not on a real hardware board.
+
 ---
 📁 Project Structure
 ```text
@@ -453,6 +465,7 @@ Git (optional)
 ```
 ---
 ⚙️ Project Architecture
+
 The implementation is organized into separate modules to keep the design readable, verifiable, and easy to extend:
 `ascon_top.v`: top-level module, integrating clock management, SPI interface, controller, cryptographic core, and key selection.
 `ascon_controller.v`: finite-state control unit, responsible for SPI command decoding, key provisioning, and operation start.
@@ -463,8 +476,10 @@ The implementation is organized into separate modules to keep the design readabl
 `SPI.v`: serial SPI communication interface.
 `constraints.xdc`: project constraints for pin assignment and clock configuration.
 `tb_nist.v`: functional validation testbench.
+
 ---
 🔬 Analysis and Optimization
+
 During the design analysis, the permutation function emerged as the main performance bottleneck.  
 Its execution time slowed down the entire cryptographic flow and had a direct impact on both latency and the maximum achievable frequency.
 To address this issue, a pipelined architecture was introduced for the critical path.  
@@ -474,6 +489,7 @@ improve datapath balancing;
 increase the maximum achievable clock frequency;
 stabilize the behavior of the core during simulation and implementation.
 This optimization is one of the key contributions of the thesis, because it targets the most expensive part of the architecture and improves the overall quality of the design.
+
 ---
 🧪 Functional Validation
 Validation was performed with the testbench:
@@ -481,11 +497,13 @@ Validation was performed with the testbench:
 tb_nist.v
 ```
 The testbench checks:
+
 encryption with the simulated PUF
 external key provisioning
 boundary conditions
 comparison between expected and actual tags
 Simulation confirms that the tag produced by the core matches the expected tag in all tested scenarios.
+
 ---
 📦 Vivado Project Setup
 1) Open the project
@@ -524,11 +542,13 @@ The external key used in the tests is:
 ```
 ---
 🧠 PUF
+
 The PUF used in this work is emulated:
 it generates a deterministic response from the challenge;
 it is used to validate control flow and key selection;
 it is not a physical PUF implemented on the board.
 This choice fits the experimental scope of the thesis and the goal of validating the architecture in Vivado.
+
 ---
 📈 Experimental Results on Vivado
 The following results were obtained in Vivado, not on a physical board.
