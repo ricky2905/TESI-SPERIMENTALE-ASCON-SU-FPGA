@@ -1,4 +1,4 @@
-🇮🇹 ASCON su FPGA — Tesi sperimentale
+# 🇮🇹 ASCON su FPGA — Tesi sperimentale
 
 Questo progetto realizza e verifica in Vivado un’implementazione di ASCON-128 su FPGA Cmod35.  
 L’architettura integra il core crittografico, la permutazione interna, un controller SPI, un blocco di clock management e una logica di selezione della chiave tra chiave esterna e PUF emulata/simulata.
@@ -6,7 +6,7 @@ La parte PUF è presente nel progetto ma solo simulata/emulata, non implementata
 I risultati sperimentali riportati in questa tesi sono ottenuti in Vivado, tramite simulazione funzionale e report di implementazione, non su scheda fisica effettiva.
 
 ---
-📁 Struttura del progetto
+ ## 📁 Struttura del progetto
 ```text
 TESI_BACKUP/
 ├── dichiarazione_conseguimento_diploma.pdf
@@ -46,7 +46,7 @@ TESI_BACKUP/
         └── ...
 ```
 ---
-🧰 Requisiti di sistema
+ ## 🧰 Requisiti di sistema
 ```text
 Vivado 2024.2
 Verilog HDL
@@ -54,7 +54,7 @@ FPGA Cmod35
 Git (opzionale)
 ```
 ---
-⚙️ Architettura del progetto
+ ## ⚙️ Architettura del progetto
 
 L’implementazione è stata organizzata in moduli separati per mantenere il design leggibile, verificabile e facilmente estendibile:
 `ascon_top.v`: modulo di livello superiore, responsabile dell’integrazione tra clock, interfaccia SPI, controller, core crittografico e selezione della chiave.
@@ -68,7 +68,7 @@ L’implementazione è stata organizzata in moduli separati per mantenere il des
 `tb_nist.v`: testbench utilizzato per la validazione funzionale del sistema.
 
 ---
-🔬 Analisi e ottimizzazione
+ ## 🔬 Analisi e ottimizzazione
 
 Durante l’analisi del progetto è emerso che la funzione di permutazione costituiva il principale collo di bottiglia dell’architettura.  
 In particolare, il suo costo temporale rallentava l’intero flusso crittografico, penalizzando sia la latenza complessiva sia la frequenza massima raggiungibile.
@@ -81,7 +81,7 @@ un comportamento più stabile del core durante la simulazione e il flusso di imp
 Questa scelta progettuale rappresenta uno degli elementi più significativi della tesi, perché interviene direttamente sul punto più costoso dell’architettura e ne migliora la qualità complessiva.
 
 ---
-🧪 Validazione funzionale
+ ## 🧪 Validazione funzionale
 La validazione è stata svolta con il testbench:
 ```text
 tb_nist.v
@@ -95,7 +95,7 @@ confronto tra tag atteso e tag ottenuto
 La simulazione conferma che il tag prodotto dal core coincide con quello atteso in tutti gli scenari testati.
 
 ---
-📦 Setup del progetto in Vivado
+ ## 📦 Setup del progetto in Vivado
 1) Apri il progetto
 Apri il file:
 ```text
@@ -121,7 +121,7 @@ Timing
 Power
 ```
 ---
-🔐 Gestione della chiave
+ ## 🔐 Gestione della chiave
 Il progetto supporta due sorgenti di chiave:
 chiave esterna caricata via SPI
 chiave da PUF emulata/simulata
@@ -131,7 +131,7 @@ La chiave esterna usata nei test è:
 000102030405060708090a0b0c0d0e0f
 ```
 ---
-🧠 PUF
+ ## 🧠 PUF
 
 La PUF presente in questo lavoro è emulata:
 genera una risposta deterministica a partire dal challenge;
@@ -140,7 +140,7 @@ non rappresenta una PUF fisica implementata su scheda.
 Questa scelta è coerente con la natura sperimentale della tesi e con l’obiettivo di validare l’architettura in Vivado.
 
 ---
-📈 Risultati sperimentali su Vivado
+ ## 📈 Risultati sperimentali su Vivado
 I risultati seguenti sono ottenuti in Vivado, non su scheda fisica.
 Output della simulazione
 ```text
@@ -381,7 +381,7 @@ Osservazioni sui risultati
 * Il progetto è validato in simulazione Vivado, non su scheda fisica
 ```
 ---
-✅ Funzionalità
+ ## ✅ Funzionalità
 ```text
 * Core ASCON-128 modulare
 * Interfaccia SPI per provisioning e lettura tag
@@ -391,7 +391,7 @@ Osservazioni sui risultati
 * Risultati verificati in Vivado
 ```
 ---
-🧹 Pulizia ambiente
+ ## 🧹 Pulizia ambiente
 Per rimuovere i file generati da Vivado, puoi eliminare:
 ```text
 .cache/
@@ -408,7 +408,7 @@ tb_nist.v
 ASCONTESISPERIMENTALE.xpr
 ```
 ---
-🇬🇧 ASCON on FPGA — Experimental Thesis Project
+ # 🇬🇧 ASCON on FPGA — Experimental Thesis Project
 
 This project implements and verifies ASCON-128 in Vivado on an FPGA Cmod35.  
 The architecture includes the cryptographic core, the internal permutation, an SPI controller, clock management, and key-selection logic between an external key and a simulated/emulated PUF.
@@ -416,7 +416,7 @@ The PUF part is included in the project but only simulated/emulated, not impleme
 The experimental results reported in this thesis are obtained in Vivado, through functional simulation and implementation reports, not on a real hardware board.
 
 ---
-📁 Project Structure
+ ## 📁 Project Structure
 ```text
 TESI_BACKUP/
 ├── dichiarazione_conseguimento_diploma.pdf
@@ -456,7 +456,7 @@ TESI_BACKUP/
         └── ...
 ```
 ---
-🧰 System Requirements
+ ## 🧰 System Requirements
 ```text
 Vivado 2024.2
 Verilog HDL
@@ -464,7 +464,7 @@ Cmod35 FPGA
 Git (optional)
 ```
 ---
-⚙️ Project Architecture
+ ## ⚙️ Project Architecture
 
 The implementation is organized into separate modules to keep the design readable, verifiable, and easy to extend:
 `ascon_top.v`: top-level module, integrating clock management, SPI interface, controller, cryptographic core, and key selection.
@@ -478,7 +478,7 @@ The implementation is organized into separate modules to keep the design readabl
 `tb_nist.v`: functional validation testbench.
 
 ---
-🔬 Analysis and Optimization
+ ## 🔬 Analysis and Optimization
 
 During the design analysis, the permutation function emerged as the main performance bottleneck.  
 Its execution time slowed down the entire cryptographic flow and had a direct impact on both latency and the maximum achievable frequency.
@@ -491,7 +491,7 @@ stabilize the behavior of the core during simulation and implementation.
 This optimization is one of the key contributions of the thesis, because it targets the most expensive part of the architecture and improves the overall quality of the design.
 
 ---
-🧪 Functional Validation
+ ## 🧪 Functional Validation
 Validation was performed with the testbench:
 ```text
 tb_nist.v
@@ -505,7 +505,7 @@ comparison between expected and actual tags
 Simulation confirms that the tag produced by the core matches the expected tag in all tested scenarios.
 
 ---
-📦 Vivado Project Setup
+ ## 📦 Vivado Project Setup
 1) Open the project
 Open:
 ```text
@@ -531,7 +531,7 @@ Timing
 Power
 ```
 ---
-🔐 Key Management
+ ## 🔐 Key Management
 The project supports two key sources:
 external key loaded through SPI
 PUF-based key from the simulated/emulated PUF
@@ -541,7 +541,7 @@ The external key used in the tests is:
 000102030405060708090a0b0c0d0e0f
 ```
 ---
-🧠 PUF
+ ## 🧠 PUF
 
 The PUF used in this work is emulated:
 it generates a deterministic response from the challenge;
@@ -550,7 +550,7 @@ it is not a physical PUF implemented on the board.
 This choice fits the experimental scope of the thesis and the goal of validating the architecture in Vivado.
 
 ---
-📈 Experimental Results on Vivado
+ ## 📈 Experimental Results on Vivado
 The following results were obtained in Vivado, not on a physical board.
 Simulation output
 ```text
@@ -791,7 +791,7 @@ Osservazioni sui risultati
 * Il progetto è validato in simulazione Vivado, non su scheda fisica
 ```
 ---
-✅ Features
+ ## ✅ Features
 ```text
 * Core ASCON-128 modulare
 * Interfaccia SPI per provisioning e lettura tag
@@ -801,7 +801,7 @@ Osservazioni sui risultati
 * Risultati verificati in Vivado
 ```
 ---
-🧹 Cleanup environment
+ ## 🧹 Cleanup environment
 To remove Vivado-generated files, delete:
 ```text
 .cache/
