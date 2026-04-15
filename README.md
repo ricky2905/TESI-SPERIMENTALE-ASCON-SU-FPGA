@@ -1,6 +1,6 @@
 🇮🇹 ASCON su FPGA — Tesi sperimentale
 Questo progetto realizza e verifica in Vivado un’implementazione di ASCON-128 su FPGA Cmod35.  
-L’architettura include il core crittografico, la permutazione interna, un controller SPI, un blocco di clock management e una logica di selezione della chiave tra chiave esterna e PUF emulata/simulata.
+L’architettura integra il core crittografico, la permutazione interna, un controller SPI, un blocco di clock management e una logica di selezione della chiave tra chiave esterna e PUF emulata/simulata.
 La parte PUF è presente nel progetto ma solo simulata/emulata, non implementata come PUF fisica su scheda.
 I risultati sperimentali riportati in questa tesi sono ottenuti in Vivado, tramite simulazione funzionale e report di implementazione, non su scheda fisica effettiva.
 ---
@@ -52,26 +52,28 @@ FPGA Cmod35
 Git (opzionale)
 ```
 ---
-⚙️ Cosa implementa il progetto
-Il design è organizzato in moduli separati:
-`ascon_top.v`: top-level, integra clock, SPI, controller, core e selezione chiave
-`ascon_controller.v`: FSM di controllo, parsing comandi SPI, provisioning chiave, avvio operazioni
-`ascon_core.v`: datapath AEAD con gestione di AD, MSG, OUT e tag
-`ascon_perm.v`: permutazione ASCON con round constants e stadi combinatori/registrati
-`ascon_logic.v`: selezione tra PUF emulata e chiave esterna, reset sincronizzato e LED di stato
-`puf_controller.v`: PUF emulata/simulata
-`SPI.v`: interfaccia seriale SPI
-`constraints.xdc`: assegnazione pin e clock
-`tb_nist.v`: testbench di validazione
+⚙️ Architettura del progetto
+L’implementazione è stata organizzata in moduli separati per mantenere il design leggibile, verificabile e facilmente estendibile:
+`ascon_top.v`: modulo di livello superiore, responsabile dell’integrazione tra clock, interfaccia SPI, controller, core crittografico e selezione della chiave.
+`ascon_controller.v`: unità di controllo a macchina a stati finiti, dedicata al parsing dei comandi SPI, al provisioning della chiave e all’avvio delle operazioni.
+`ascon_core.v`: datapath AEAD principale, con gestione dei dati associati, del messaggio, dell’output e del tag di autenticazione.
+`ascon_perm.v`: implementazione della permutazione ASCON, con round constants e suddivisione del percorso di elaborazione in stadi combinatori e registrati.
+`ascon_logic.v`: logica di selezione tra chiave esterna e chiave generata dalla PUF emulata, con reset sincronizzato e segnali di stato su LED.
+`puf_controller.v`: modello della PUF emulata/simulata usata nel progetto sperimentale.
+`SPI.v`: interfaccia seriale SPI per la comunicazione con l’esterno.
+`constraints.xdc`: vincoli di progetto per assegnazione pin e clock.
+`tb_nist.v`: testbench utilizzato per la validazione funzionale del sistema.
 ---
 🔬 Analisi e ottimizzazione
-Durante l’analisi del progetto è emerso che la funzione di permutazione rappresentava il principale collo di bottiglia: il suo tempo di elaborazione rallentava l’intero flusso crittografico.
-Per questo motivo è stata introdotta una soluzione pipelined, con l’obiettivo di:
-ridurre la latenza percepita del blocco di permutazione
-migliorare il bilanciamento del datapath
-aumentare la frequenza massima ottenibile
-rendere più stabile il comportamento del core durante la simulazione e il flusso di implementazione
-Questa ottimizzazione è uno degli aspetti centrali della tesi.
+Durante l’analisi del progetto è emerso che la funzione di permutazione costituiva il principale collo di bottiglia dell’architettura.  
+In particolare, il suo costo temporale rallentava l’intero flusso crittografico, penalizzando sia la latenza complessiva sia la frequenza massima raggiungibile.
+Per questo motivo è stata introdotta una soluzione pipeline, con l’obiettivo di migliorare il comportamento del blocco critico e rendere il datapath più efficiente.  
+L’ottimizzazione è stata applicata per ottenere:
+una riduzione della latenza percepita del blocco di permutazione;
+un migliore bilanciamento del datapath;
+un incremento della frequenza massima teoricamente ottenibile;
+un comportamento più stabile del core durante la simulazione e il flusso di implementazione.
+Questa scelta progettuale rappresenta uno degli elementi più significativi della tesi, perché interviene direttamente sul punto più costoso dell’architettura e ne migliora la qualità complessiva.
 ---
 🧪 Validazione funzionale
 La validazione è stata svolta con il testbench:
@@ -123,10 +125,10 @@ La chiave esterna usata nei test è:
 ---
 🧠 PUF
 La PUF presente in questo lavoro è emulata:
-genera una risposta deterministica a partire dal challenge
-serve per validare il flusso di controllo e la selezione chiave
-non rappresenta una PUF fisica implementata su scheda
-Questa scelta è coerente con la parte sperimentale della tesi e con l’obiettivo di validare l’architettura in Vivado.
+genera una risposta deterministica a partire dal challenge;
+serve per validare il flusso di controllo e la selezione della chiave;
+non rappresenta una PUF fisica implementata su scheda.
+Questa scelta è coerente con la natura sperimentale della tesi e con l’obiettivo di validare l’architettura in Vivado.
 ---
 📈 Risultati sperimentali su Vivado
 I risultati seguenti sono ottenuti in Vivado, non su scheda fisica.
@@ -450,26 +452,28 @@ Cmod35 FPGA
 Git (optional)
 ```
 ---
-⚙️ What the project implements
-The design is split into dedicated modules:
-`ascon_top.v`: top-level integration of clock, SPI, controller, core, and key selection logic
-`ascon_controller.v`: FSM controller, SPI command parsing, key provisioning, operation start
-`ascon_core.v`: AEAD datapath with handling for AD, MSG, OUT, and tag
-`ascon_perm.v`: ASCON permutation with round constants and combinational/registered stages
-`ascon_logic.v`: key selection between simulated PUF and external key, synchronized reset, and status LEDs
-`puf_controller.v`: simulated/emulated PUF
-`SPI.v`: SPI serial interface
-`constraints.xdc`: pin and clock assignments
-`tb_nist.v`: validation testbench
+⚙️ Project Architecture
+The implementation is organized into separate modules to keep the design readable, verifiable, and easy to extend:
+`ascon_top.v`: top-level module, integrating clock management, SPI interface, controller, cryptographic core, and key selection.
+`ascon_controller.v`: finite-state control unit, responsible for SPI command decoding, key provisioning, and operation start.
+`ascon_core.v`: main AEAD datapath, handling associated data, message data, output data, and authentication tag generation.
+`ascon_perm.v`: ASCON permutation implementation, with round constants and a split between combinational and registered processing stages.
+`ascon_logic.v`: key-selection logic between the external key and the PUF-generated key, with synchronized reset and LED status signals.
+`puf_controller.v`: simulated/emulated PUF model used in the experimental project.
+`SPI.v`: serial SPI communication interface.
+`constraints.xdc`: project constraints for pin assignment and clock configuration.
+`tb_nist.v`: functional validation testbench.
 ---
-🔬 Analysis and optimization
-During the analysis of the project, it became clear that the permutation function was the main bottleneck: it slowed down the entire cryptographic flow.
-For this reason, a pipelined solution was introduced to:
-reduce permutation latency
-improve datapath balancing
-increase the achievable maximum frequency
-make the core behavior more stable during simulation and implementation
-This optimization is one of the central contributions of the thesis.
+🔬 Analysis and Optimization
+During the design analysis, the permutation function emerged as the main performance bottleneck.  
+Its execution time slowed down the entire cryptographic flow and had a direct impact on both latency and the maximum achievable frequency.
+To address this issue, a pipelined architecture was introduced for the critical path.  
+The optimization was adopted to achieve the following goals:
+reduce the effective latency of the permutation block;
+improve datapath balancing;
+increase the maximum achievable clock frequency;
+stabilize the behavior of the core during simulation and implementation.
+This optimization is one of the key contributions of the thesis, because it targets the most expensive part of the architecture and improves the overall quality of the design.
 ---
 🧪 Functional Validation
 Validation was performed with the testbench:
@@ -521,9 +525,9 @@ The external key used in the tests is:
 ---
 🧠 PUF
 The PUF used in this work is emulated:
-it generates a deterministic response from the challenge
-it is used to validate control flow and key selection
-it is not a physical PUF implemented on the board
+it generates a deterministic response from the challenge;
+it is used to validate control flow and key selection;
+it is not a physical PUF implemented on the board.
 This choice fits the experimental scope of the thesis and the goal of validating the architecture in Vivado.
 ---
 📈 Experimental Results on Vivado
@@ -762,19 +766,19 @@ Osservazioni sui risultati
 ```text
 * Tutti gli scenari terminano con "SUMMARY: Tag OK (all bytes match)"
 * La logica PUF funziona nella versione simulata
-* La provisioning della chiave esterna è corretta
+* Il provisioning della chiave esterna è corretto
 * I test boundary passano con successo
 * Il progetto è validato in simulazione Vivado, non su scheda fisica
 ```
 ---
 ✅ Features
 ```text
-* Modular ASCON-128 core
-* SPI interface for provisioning and tag reading
-* Key selection between simulated PUF and external key
-* Permutation optimized with a pipeline
-* Functional validation with a dedicated testbench
-* Results verified in Vivado
+* Core ASCON-128 modulare
+* Interfaccia SPI per provisioning e lettura tag
+* Logica di selezione chiave tra PUF emulata e chiave esterna
+* Ottimizzazione della permutazione tramite pipeline
+* Validazione funzionale con testbench dedicato
+* Risultati verificati in Vivado
 ```
 ---
 🧹 Cleanup environment
